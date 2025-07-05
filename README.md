@@ -1,21 +1,21 @@
 # 📦 Mega Delivery
 
-Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från en NPC, hämtar ett paket från en slumpad plats och levererar tillbaka det för att få en belöning i form av pengar eller items.
+Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från en NPC, hämtar ett paket från en plats och återvänder för att lämna det.
 
-## ✨ Funktioner
-- NPC-interaktion med `ox_target` (eller annat system)
-- Uppdrag i tre steg: starta → hämta → leverera tillbaka
+## 🛠 Funktioner
+- NPC-interaktion för att starta uppdrag
+- Hämtning och leverans av paket med prop
 - Slumpmässiga leveransplatser
 - Belöning i form av pengar eller items
 - Stöd för `ox_lib` och `qb-core`
-- Valbar blip för NPC via `config.lua`
-- Fullt konfigurerbart
+- Inställningar i `config.lua`
+- Valbar blip för NPC på kartan
 
-## 🧰 Krav
+## ❗️Krav
 - `qb-core`
 - `ox_lib`
-- `ox_target` eller annat interaktionssystem
-- Ett inventorysystem som stödjer `inventory:client:ItemBox` (t.ex. lj-inventory, qb-inventory, ox_inventory)
+- `ox_target` (eller liknande interaktionssystem)
+- Ett inventorysystem som stödjer `inventory:client:ItemBox`
 
 ## ⚙️ Installation
 1. Klona eller ladda ner detta till din `resources`-mapp:
@@ -24,18 +24,8 @@ Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från 
    ```
 
 2. Lägg till i `server.cfg`:
-   ```
+   ```cfg
    ensure mega_delivery
    ```
 
-3. Se till att alla beroenden är installerade och konfigurerade.
-
-4. Restarta servern – klart!
-
-## 🔧 Konfiguration
-Konfiguration sker i `config.lua`, där du kan justera:
-- NPC-modell och position
-- Platser för hämtning och leverans
-- Typ av belöning (pengar, item, slumpad)
-- Belopp/item och hur ofta det ges
-- Visa eller gömma blip på kartan
+3. Starta servern – klart!

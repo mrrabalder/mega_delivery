@@ -1,6 +1,4 @@
-
-local ox_lib = exports.ox_lib
-
+local lang = Config.Text[Config.Locale]
 local deliveryBlip = nil
 local deliveryProp = nil
 local deliveryCoords = nil
@@ -18,11 +16,11 @@ AddEventHandler('mega_delivery:start', function(location)
     SetBlipScale(deliveryBlip, 0.8)
     SetBlipAsShortRange(deliveryBlip, false)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("Hämta paket")
+    AddTextComponentString(lang.pickup)
     EndTextCommandSetBlipName(deliveryBlip)
     SetBlipRoute(deliveryBlip, true)
 
-    ox_lib:notify({ type = 'inform', description = 'Hämta paketet från markerad plats.' })
+    exports.ox_lib:notify({ type = 'inform', description = lang.pickup })
 
     CreateThread(function()
         while true do
@@ -33,11 +31,11 @@ AddEventHandler('mega_delivery:start', function(location)
             if not returnToNpc and #(coords - deliveryCoords) < 2.5 then
                 if not interacting then
                     interacting = true
-                    ox_lib:showTextUI('[E] Plocka upp paket')
+                    exports.ox_lib:showTextUI('[E] ' .. lang.pickup)
                 end
 
                 if IsControlJustReleased(0, 38) then
-                    ox_lib:hideTextUI()
+                    exports.ox_lib:hideTextUI()
                     interacting = false
 
                     local propModel = `prop_cs_cardbox_01`
@@ -56,21 +54,21 @@ AddEventHandler('mega_delivery:start', function(location)
                     SetBlipScale(deliveryBlip, 0.8)
                     SetBlipAsShortRange(deliveryBlip, false)
                     BeginTextCommandSetBlipName("STRING")
-                    AddTextComponentString("Lämna tillbaka paket")
+                    AddTextComponentString(lang.deliver)
                     EndTextCommandSetBlipName(deliveryBlip)
                     SetBlipRoute(deliveryBlip, true)
 
                     returnToNpc = true
-                    ox_lib:notify({ type = 'inform', description = 'Leverera paketet till NPC!' })
+                    exports.ox_lib:notify({ type = 'inform', description = lang.deliver })
                 end
             elseif returnToNpc and #(coords - npcCoords) < 2.5 then
                 if not interacting then
                     interacting = true
-                    ox_lib:showTextUI('[E] Lämna paket')
+                    exports.ox_lib:showTextUI('[E] ' .. lang.deliver)
                 end
 
                 if IsControlJustReleased(0, 38) then
-                    ox_lib:hideTextUI()
+                    exports.ox_lib:hideTextUI()
                     interacting = false
                     RemoveBlip(deliveryBlip)
                     DeleteEntity(deliveryProp)
@@ -78,12 +76,11 @@ AddEventHandler('mega_delivery:start', function(location)
                     returnToNpc = false
                     deliveryCoords = nil
                     TriggerServerEvent('mega_delivery:checkItem')
-                    ox_lib:notify({ type = 'success', description = 'Paket levererat!' })
                     break
                 end
             else
                 if interacting then
-                    ox_lib:hideTextUI()
+                    exports.ox_lib:hideTextUI()
                     interacting = false
                 end
             end
@@ -99,23 +96,10 @@ CreateThread(function()
         debug = false,
         options = {
             {
-                label = 'Prata med Greger',
+                label = lang.start,
                 icon = 'fa-solid fa-box',
                 onSelect = function()
-                    local dialog = {
-                        "Jag har en leverans åt dig.",
-                        "Paketet väntar – fixa det!",
-                        "Plocka upp lådan och kom tillbaka.",
-                        "En snabb leverans, inga frågor."
-                    }
-
-                    local input = ox_lib:inputDialog('Leveransuppdrag', {
-                        { type = 'inform', label = dialog[math.random(#dialog)] }
-                    })
-
-                    if input then
-                        TriggerServerEvent('mega_delivery:tryStart')
-                    end
+                    TriggerServerEvent('mega_delivery:tryStart')
                 end
             }
         }
@@ -130,7 +114,6 @@ CreateThread(function()
     SetEntityAsMissionEntity(ped, true, true)
 end)
 
-
 if Config.ShowBlip then
     local blip = AddBlipForCoord(Config.NPC.coords.xyz)
     SetBlipSprite(blip, Config.NPCBlip.sprite)
@@ -141,4 +124,3 @@ if Config.ShowBlip then
     AddTextComponentString(Config.NPCBlip.name)
     EndTextCommandSetBlipName(blip)
 end
-

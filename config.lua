@@ -1,6 +1,8 @@
 
 Config = {}
 
+Config.Locale = 'en' -- 'sv' för svenska, 'en' for English
+
 Config.ShowBlip = true -- Sätt till false om du inte vill visa blippen
 Config.NPCBlip = {
     sprite = 280,          -- Ändra till valfri blip (t.ex. 1 = röd prick, 514 = paket)
@@ -61,4 +63,23 @@ Config.PickupPoints = {
     vector3(-320.0, -1545.0, 27.5),
     vector3(-635.0, -1225.0, 11.8),
     vector3(215.0, -810.0, 30.7)
+}
+
+Config.Text = {
+    sv = {
+        start = '[E] Prata med leveransgubben',
+        pickup = '[E] Plocka upp paket',
+        deliver = '[E] Lämna paket',
+        no_vehicle = 'Du måste använda leveransbilen!',
+        reward_money = 'Du fick %s kr!',
+        reward_item = 'Du fick %sx %s!',
+    },
+    en = {
+        start = '[E] Talk to the delivery guy',
+        pickup = '[E] Pick up package',
+        deliver = '[E] Deliver package',
+        no_vehicle = 'You must use the delivery vehicle!',
+        reward_money = 'You received %s kr!',
+        reward_item = 'You received %sx %s!',
+    }
 }
