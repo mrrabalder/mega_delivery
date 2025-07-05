@@ -30,6 +30,8 @@ Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från 
 
 3. Se till att alla beroenden är installerade och konfigurerade.
 
+4. Restarta servern – klart!
+
 ## 🔧 Konfiguration
 Konfiguration sker i `config.lua`, där du kan justera:
 - NPC-modell och position
