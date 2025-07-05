@@ -28,4 +28,4 @@ Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från 
    ensure mega_delivery
    ```
 
-3. Starta servern – klart!
+3. Starta om servern – klart!
