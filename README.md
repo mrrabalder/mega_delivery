@@ -29,3 +29,38 @@ Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från 
    ```
 
 3. Starta om servern – klart!
+
+
+ENG
+
+# 📦 Mega Delivery
+
+A simple delivery mission for FiveM where players receive a mission from an NPC, pick up a package from a location, and return to drop it off.
+
+## 🛠 Features
+- NPC interaction to start quests
+- Pick up and deliver packages with props
+- Random delivery locations
+- Reward in the form of money or items
+- Support for `ox_lib` and `qb-core`
+- Settings in `config.lua`
+- Selectable blip for NPCs on the map
+
+## ❗️Requirements
+- `qb-core`
+- `ox_lib`
+- `ox_target` (or similar interaction system)
+- An inventory system that supports `inventory:client:ItemBox`
+
+## ⚙️ Installation
+1. Clone or download this to your `resources` folder:
+```bash
+git clone https://github.com/mrrabalder/mega_delivery.git
+```
+
+2. Add to `server.cfg`:
+```cfg
+ensure mega_delivery
+```
+
+3. Restart the server – done!
