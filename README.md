@@ -33,7 +33,7 @@ Ett lättanvänt leveransuppdrag för FiveM där spelare får ett uppdrag från 
 
 ENG
 
-# 📦 Mega Delivery
+# 📦 ENKEL Delivery
 
 A simple delivery mission for FiveM where players receive a mission from an NPC, pick up a package from a location, and return to drop it off.
 
